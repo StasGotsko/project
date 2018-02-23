@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paint </title>
+</head>
+<body>
+    <canvas id = "canvas" width = "800" height="500" style = "border: solid"></canvas>
+    <div style="position:absolute; top:400px; left:900px;">
+       <label>Выберете цвет</label>
+       <input type="color" id="color">
+   </div>
+   <div style="position:absolute; top:450px; left:900px;">
+       <label>Выберете толщину</label>
+       <input type="text" id="width">
+   </div>   
+   <div style="position:absolute; top:100px; left:900px;">
+       <label>Фигуры</label>
+       <button id = "btn1" onclick = "figura('line')">Линия</button>
+       <button id = "btn2" onclick="figura('kvadrat')">Квадрат</button>
+       <button id = "btn3" onclick = "figura('elipse')">Овал</button>
+       <button id = "btn4" onclick="figura('kvad')">Квадровал</button>
+   </div>
+</body>
+<script>
+    var type = 'line';
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    function figura(f)
+    {
+        type = f;
+    }
+
+    func();
+    var x;
+    var y;
+    function func ()
+    {
+        canvas.onmousedown = function (e)
+        {
+           x = e.x;
+           y = e.y;
+           ctx.beginPath();
+           ctx.moveTo(x, y);
+       }
+       canvas.onmouseup = function (e)
+       {
+        var x1 = e.x;
+        var y1 = e.y;
+
+        switch (type)
+        {
+            case 'line':
+            {
+                ctx.lineTo(x1, y1);
+                ctx.stroke();
+            }
+            break;
+            case 'kvadrat':
+            {
+                x2 = e.x;
+                y2 = e.y;
+
+                ctx.beginPath();
+                ctx.strokeRect(x,y,x2-x,y2-y);
+            }
+            break;
+            case 'elipse':
+            {
+                ctx.beginPath();
+                ctx.ellipse(x, y, x1 - x, y1 - y, 0, 0, 2 * Math.PI, false);
+                ctx.stroke();
+            }
+            break;
+            case 'kvad':
+            {
+                var height = y1 - y;
+                var width = x1 - x;
+                var radius = (width/height)*4;
+                ctx.moveTo(x, y + radius);
+                ctx.lineTo(x, y + height - radius);
+                ctx.quadraticCurveTo(x, y + height, x + radius, y + height);
+                ctx.lineTo(x + width - radius, y + height);
+                ctx.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
+                ctx.lineTo(x + width, y + radius);
+                ctx.quadraticCurveTo(x + width, y, x + width - radius, y);
+                ctx.lineTo(x + radius, y);
+                ctx.quadraticCurveTo(x, y, x, y + radius);
+                ctx.stroke();
+            }
+            break;
+        }
+    }
+    document.getElementById('color').oninput = function()
+    {
+        ctx.strokeStyle = this.value;
+    }
+    document.getElementById('width').oninput = function()
+    {
+        ctx.lineWidth = this.value;
+    }
+}
+</script>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type = "number" id = "idTxt" value = ""> <p>
+		<input type =  "text" id = "fnameTxt" value = ""> <p>
+			<input type = "text" id = "lnameTxt" value = ""> <p>
+				<input type = "number" id = "ageTxt" value = ""> <p>
+					<input type = "button" id = "btnCreate" value = "Create" onclick = "Create()"/>
+					<input type = "button" id = "btnRead" value = "Read" onclick =      "Read()"/>
+					<input type = "button" id = "btnUpdate" value = "Update" onclick = "Update()"/>
+					<input type = "button" id = "btnDelete" value = "Delete" onclick = "Delete()"/>
+					<table border="1" id = 'tableId'>
+						<caption>Person</caption>
+						<tr>
+							<th>id</th>
+							<th>FirstName</th>
+							<th>lastName</th>
+							<th>age</th>
+						</tr>
+					</table>
+				</body>
+				<script>
+
+					var myRequest = new XMLHttpRequest(); 
+					var table ;
+
+					function clear()
+					{
+
+						table = document.getElementById('tableId');
+
+						for (var i = 1; i = table.rows.length-1; i++) 
+						{
+							table.deleteRow(i); 
+						}
+
+					}
+
+					function Read()
+					{
+						table = document.getElementById('tableId');
+
+						if (table.rows.length>0)
+						{
+							clear();
+						}
+
+						var mass=''
+						myRequest.onreadystatechange =   GetFromServer();
+						myRequest.open('GET', "read.php", true);
+						myRequest.send();				
+						function GetFromServer()
+						{
+							if (myRequest.readyState != 4) 
+							{
+								return;
+							}
+							if (myRequest.status != 200) 
+							{
+								alert(myRequest.status)
+							} 
+							else 
+							{
+								mass = myRequest.responseText;
+							}
+						}
+
+						var str = mass.split('/');
+
+						var newRow; 
+						;
+						var cel1 ;
+						var cel2 ;
+						var cel3 ;
+						var cel4 ;
+
+						for(var i = 0; i < str.length-1; i++)
+						{
+
+							table = document.getElementsByTagName('table')[0];
+							newRow = table.insertRow(table.rows.length);
+
+							cel1 = newRow.insertCell(0);
+							cel2 = newRow.insertCell(1);
+							cel3 = newRow.insertCell(2);
+							cel4 = newRow.insertCell(3);
+
+							str2 = str[i].split(",");
+
+							cel1.innerHTML = str2[0];
+							cel2.innerHTML = str2[1];
+							cel3.innerHTML = str2[2];
+							cel4.innerHTML = str2[3];
+						}
+					}
+
+					function Create()
+					{
+
+						var id = parseInt(idTxt.value);
+						var fname = fnameTxt.value;
+						var lname = lnameTxt.value;
+						var age   = parseInt(ageTxt.value) ;
+						var getRequest = '' ;
+						getRequest = "create.php?id=" + id + "&fname=" + fname + "&lname=" + lname + "&age=" + age; 
+
+						myRequest.onreadystatechange =   GetFromServer();
+						myRequest.open('GET', getRequest, true);
+						myRequest.send();
+
+					}
+
+					function GetFromServer()
+					{
+						if (myRequest.readyState != 4) 
+						{
+							return;
+						}
+						if (myRequest.status != 200) 
+						{
+							alert(myRequest.status)
+						} 
+						else 
+						{
+
+						}
+					}
+
+					function Delete()
+					{
+
+						var id = parseInt(idTxt.value);
+						var getRequest = '' ;
+						getRequest = "delete.php?id=" + id; 
+
+						myRequest.onreadystatechange =   GetFromServer();
+						myRequest.open('GET', getRequest, true);
+						myRequest.send();
+
+					}
+
+					function GetFromServer()
+					{
+						if (myRequest.readyState != 4) 
+						{
+							return;
+						}
+						if (myRequest.status != 200) 
+						{
+							alert(myRequest.status)
+						} 
+						else 
+						{
+
+						}
+					}
+
+					function Update()
+					{
+						var id = parseInt(idTxt.value);
+						var fname = fnameTxt.value;
+						var lname = lnameTxt.value;
+						var age   = parseInt(ageTxt.value) ;
+						var getRequest = '' ;
+						getRequest = "update.php?id=" + id + "&fname=" + fname + "&lname=" + lname + "&age=" + age; 
+						myRequest.onreadystatechange =   GetFromServer();
+						myRequest.open('GET', getRequest, true);
+						myRequest.send();
+					}
+					function GetFromServer()
+					{
+						if (myRequest.readyState != 4) 
+						{
+							return;
+						}
+						if (myRequest.status != 200) 
+						{
+							alert(myRequest.status)
+						} 
+						else 
+						{
+
+						}
+					}
+				</script>
+				</html>
+				

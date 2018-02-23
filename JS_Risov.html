@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyPaint</title>
+</head>
+<body>
+    <div>
+        <canvas id="canvas" width="800" height="400" style="border: solid"></canvas>
+    </div>
+    <br>
+    <div>
+        <button id="btn1" onclick="clrLine(1)">Red</button>
+        <button id="btn2" onclick="clrLine(2)">Green</button>
+        <button id="btn3" onclick="clrLine(3)">Blue</button>
+    </div>
+    <br>
+    <div>
+        <button id="btn5" onclick="widthLine(3)">Width 3</button>
+        <button id="btn6" onclick="widthLine(9)">Width 9</button>
+        <button id="btn7" onclick="widthLine(20)">Width 20</button>
+    </div>
+</body>
+<script>
+    var canvas = document.getElementById('canvas');
+    var ctx;
+    function mousePresed() {
+        ctx = canvas.getContext('2d');
+        var check = false;
+        canvas.onmousedown = function (e) {
+            ctx.beginPath();
+            ctx.moveTo(e.clientX, e.clientY);
+            check = true;
+        }
+        canvas.onmouseup = function () {
+            check = false;
+        }
+        canvas.onmousemove = function (e) {
+            if (check) {
+                ctx.lineTo(e.clientX, e.clientY);
+                ctx.stroke();
+            }
+        };
+    }
+    function widthLine(x) {
+        switch (x) {
+            case 3:
+            ctx.lineWidth = 3;
+            break;
+            case 9:
+            ctx.lineWidth = 9;
+            break;
+            case 20:
+            ctx.lineWidth = 20;
+            break;
+        }
+    }
+    function clrLine(y) {
+        switch (y) {
+            case 1:
+            ctx.strokeStyle = 'red';
+            break;
+            case 2:
+            ctx.strokeStyle = 'green';
+            break;
+            case 3:
+            ctx.strokeStyle = 'blue';
+            break;
+        }
+    }
+    mousePresed();
+</script>
+</html>

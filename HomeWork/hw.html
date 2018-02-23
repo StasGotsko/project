@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Projest</title>
+	<link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+	<header class="page-header">
+		<div class="page-header__img-logo">
+			<img id="imgLogo" src="image/csss.png" alt="logo">
+		</div >
+			<h1>MY FIRST SINGLE PAGE</h1>
+		<div class="nav-bar page-header__nav-bar">
+			<div class="link nav-bar__link-home">
+				<a class="link-home link__color-link" href="https://www.google.com.ua/" target="blank">HOME</a>
+			</div >
+			<div class="link nav-bar__link-form">
+				<a class="link-form link__color-link" href="hwcont.html">FORM</a>
+			</div>
+			<div class="link nav-bar__link-contacts">
+				<a class="link-contacts link__color-link" href="hwcont.html" target="blank">CONTACTS</a>
+			</div>
+		</div>
+	</header>
+
+<form class="main-form">
+	<fieldset class="fieldset main-form__fieldset">
+		<legend>My Form</legend>
+		<div class="first-div main-form__first-div">
+			<h3 class="first-div__title">First Part</h3>
+			<div class="elem first-div__elem">
+				<div class="elem__label">
+					<label for="name"> Name*</label>
+				</div>
+				<div>
+					<input id="name" type="text" title="Enter your name..." placeholder="Enter your name..." required>
+				</div>
+			</div>
+			<div class="elem first-div__elem">
+				<div  class="elem__label">
+					<label for="surname"> Surname*</label>
+				</div>
+				<div>
+					<input id="surname" type="text" title="Enter your surname..." placeholder="Enter your surname..." required>
+				</div>
+			</div>
+			<div class="elem first-div__elem">
+				<div  class="elem__label">
+					<label for="age"> Age*</label>
+				</div>
+				<div>
+					<input id="age" type="text" title="Enter your age..." placeholder="Enter your age..." required>
+				</div>
+			</div>
+			<div class="elem first-div__elem">
+				<div  class="elem__label">
+					<label for="age"> Gender*</label>
+				</div>
+					<div>
+						<label for="male">male</label>
+						<input name="gender" id="male" type="radio" required>
+					</div>
+					<div>
+						<label for="female">female</label>
+						<input name="gender" id="female" type="radio" required>
+					</div>
+				
+			</div>
+		</div>
+		<div class="first-div main-form__second-div">
+			<h3 class="first-div__title">Second Part</h3>
+			<div class="elem first-div__elem">
+				<div  class="elem__label">
+					<label for="login"> Login*</label>
+				</div>
+				<div>
+					<input id="login" type="text" title="Enter your login..."placeholder="Enter your login..." required>
+				</div>
+			</div>
+			<div class="elem first-div__elem">
+				<div  class="elem__label">
+					<label for="email"> Email*</label>
+				</div>
+				<div>
+					<input id="email" type="text" title="Enter your email..."placeholder="Enter your email..." required>
+				</div>
+			</div>
+			<div class="elem first-div__elem">
+				<div  class="elem__label">
+					<label for="password"> Password*</label>
+				</div>
+				<div>
+					<input id="password" type="text" title="Enter your password..."placeholder="Enter your password..." required>
+				</div>
+			</div>
+			<div class="elem first-div__elem">
+				<div  class="elem__label">
+					<label for="password2"> Repeat Password*</label>
+				</div>
+				<div>
+					<input id="password2" type="text" title="Enter your password..."placeholder="Enter your password..." required>
+				</div>
+			</div>
+		</div>
+		<div class="main-form__checkbox-agree">
+			<input type="checkbox" name="agree">I agree with the rules
+		</div>
+		<div class="main-form__but">
+			<button type="submit" name="submit">Submit</button>
+			<button type="submit" name="reset">Reset</button>
+			<button type="submit" name="cancel">Cancel</button>
+		</div>
+	</fieldset>
+</form>
+<form class="main-form-table">
+	<fieldset class="fieldset main-form-table__fieldset">
+		<legend>Table</legend>
+		<table>
+			<caption class="table__caption">PERSON</caption>
+			<thead>
+  				<tr><th>ID</th><th>FNAME</th><th>LNAME</th><th>AGE</th></tr>
+  		</thead>
+  			<tbody class="data table__data">
+    			<tr><td>1</td><td>Dima</td><td>Rima</td><td>2</td></tr>
+    			<tr><td>2</td><td>Egor</td><td>Dugor</td><td>22</td></tr>
+    			<tr><td>3</td><td>Fima</td><td>Sliva</td><td>12</td></tr>
+    			<tr><td>4</td><td>Kot</td><td>Barbos</td><td>87</td></tr>
+    			<tr><td>5</td><td>Dunia</td><td>Gladkova</td><td>6</td></tr>
+			</tbody>
+		</table>
+	</fieldset>
+</form>
+	<footer class="page-footer">
+		<div class="imgLogoBtn page-footer__img-logo">
+			<img id="imgLogoBtn" src="image/indexcss.png">
+		</div>
+	</footer>
+</body>
+<script type="scripts/script.js"></script>
+</html>
